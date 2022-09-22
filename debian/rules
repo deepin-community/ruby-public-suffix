@@ -1,0 +1,30 @@
+#!/usr/bin/make -f
+
+export GEM2DEB_TEST_RUNNER = --check-dependencies
+export DH_RUBY = --gem-install
+
+include /usr/share/dpkg/pkg-info.mk
+
+UPSTREAM_VERSION=$(shell echo $(DEB_VERSION_UPSTREAM) | sed -E 's,[+]ds(fg)?$$,,g')
+
+%:
+	mkdir -p debian/build/locale
+	localedef -f UTF-8 -i en_US debian/build/locale/en_US.UTF-8
+	LOCPATH=$(CURDIR)/debian/build/locale LC_ALL=en_US.UTF-8 dh $@ --buildsystem=ruby --with ruby
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf debian/build/
+	rm -rf data/list.txt
+	test -d data && rmdir --ignore-fail-on-non-empty data || true
+
+override_dh_auto_build:
+	mkdir -p data
+	ln -s /usr/share/publicsuffix/public_suffix_list.dat data/list.txt
+	dh_auto_build
+
+override_dh_auto_install:
+	dh_auto_install
+	rm -rf debian/ruby-public-suffix/usr/share/rubygems-integration/all/gems/public_suffix-$(UPSTREAM_VERSION)/data/list.txt
+	mkdir -p debian/ruby-public-suffix/usr/share/rubygems-integration/all/gems/public_suffix-$(UPSTREAM_VERSION)/data/
+	ln -s /usr/share/publicsuffix/public_suffix_list.dat debian/ruby-public-suffix/usr/share/rubygems-integration/all/gems/public_suffix-$(UPSTREAM_VERSION)/data/list.txt

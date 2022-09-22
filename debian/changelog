@@ -1,0 +1,46 @@
+ruby-public-suffix (4.0.6+ds-1) unstable; urgency=medium
+
+  * Team upload
+
+  [ Utkarsh Gupta ]
+  * Add salsa-ci.yml
+
+  [ Debian Janitor ]
+  * Bump debhelper from old 11 to 12.
+  * Set debhelper-compat version in Build-Depends.
+  * Apply multi-arch hints.
+    + ruby-public-suffix: Add :any qualifier for ruby dependency.
+
+  [ Cédric Boutillier ]
+  * New upstream version 4.0.6+ds
+  * Refresh packaging
+  * Add upstream metadata
+
+ -- Cédric Boutillier <boutil@debian.org>  Tue, 26 Oct 2021 12:47:28 +0200
+
+ruby-public-suffix (3.0.3+ds-1) unstable; urgency=medium
+
+  * Team upload
+  * Remove data/list.txt and use publicsuffix package
+
+ -- Bastien Roucariès <rouca@debian.org>  Wed, 31 Oct 2018 12:40:36 +0100
+
+ruby-public-suffix (3.0.3-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream version:
+    This new version includes a major redesign of the library internals,
+    with the goal to drastically improve the lookup time while reducing
+    storage space.
+    For this reason, several public methods that are no longer applicable
+    have been deprecated and/or removed.
+  * Improve debian copyright
+  * Bump compat and policy (no changes)
+
+ -- Bastien Roucariès <rouca@debian.org>  Wed, 31 Oct 2018 08:32:22 +0100
+
+ruby-public-suffix (2.0.5-1) unstable; urgency=medium
+
+  * Initial release (Closes: #866010)
+
+ -- Sruthi Chandran <srud@disroot.org>  Mon, 26 Jun 2017 20:32:02 +0530

@@ -1,0 +1,35 @@
+Source: ruby-public-suffix
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Sruthi Chandran <srud@disroot.org>
+Build-Depends: debhelper-compat (= 12),
+               gem2deb,
+               rake,
+               ruby-minitest-reporters,
+               ruby-mocha,
+               locales,
+	       publicsuffix
+Build-Conflicts: locales-all
+Standards-Version: 4.6.0
+Vcs-Git: https://salsa.debian.org/ruby-team/ruby-public-suffix.git
+Vcs-Browser: https://salsa.debian.org/ruby-team/ruby-public-suffix
+Homepage: https://simonecarletti.com/code/publicsuffix-ruby
+Testsuite: autopkgtest-pkg-ruby
+XS-Ruby-Versions: all
+Rules-Requires-Root: no
+
+Package: ruby-public-suffix
+Architecture: all
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: publicsuffix,
+         ${misc:Depends},
+         ${ruby:Depends},
+         ${shlibs:Depends}
+Description: Domain name parser based on the Public Suffix List
+ PublicSuffix can parse and decompose a domain name into top level domain,
+ domain and subdomains.
+ .
+ The Public Suffix List is a catalog of certain Internet domain names.
+ The term is also known by the form effective top-level domain (eTLD).
+ This list is used for the security and privacy policies of web application.
