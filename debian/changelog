@@ -1,3 +1,19 @@
+ruby-public-suffix (4.0.6+ds-2) unstable; urgency=medium
+
+  * Team upload
+  * Change internal path to public suffix list from data/list.txt to system
+    publicsuffix package
+    - add 0001-Use-system-public-suffix-list.patch
+    - d/rules: remove symlinks to replace data/list.txt, which were causing
+      errors (Closes: #1005638)
+  * Bump debhelper compatibility level to 13
+  * Bump Standards-Version to 4.6.1 (no changes needed)
+  * Use system public suffix list
+  * Simplify debian/rules
+  * Remove boilerplate ruby-public-suffix.install
+
+ -- Cédric Boutillier <boutil@debian.org>  Thu, 23 Jun 2022 23:32:03 +0200
+
 ruby-public-suffix (4.0.6+ds-1) unstable; urgency=medium
 
   * Team upload
@@ -13,8 +29,10 @@ ruby-public-suffix (4.0.6+ds-1) unstable; urgency=medium
 
   [ Cédric Boutillier ]
   * New upstream version 4.0.6+ds
+    - fix build with ruby3.0 (Closes: #996122, #996349)
   * Refresh packaging
   * Add upstream metadata
+  * Breaks earlier ruby-github-pages-health-check
 
  -- Cédric Boutillier <boutil@debian.org>  Tue, 26 Oct 2021 12:47:28 +0200
 
